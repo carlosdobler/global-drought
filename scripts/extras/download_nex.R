@@ -4,15 +4,16 @@ library(furrr)
 options(future.fork.enable = T)
 plan(multicore, workers = 8)
 
-vars_long <- c("precipitation", "wind_speed", "maximumum_temperature", "minimum_temperature", "relative_humidity", "surf_solar_radiation_down")
-vars <- c("pr", "sfcWind", "tasmax", "tasmin", "hurs", "rsds")
+vars_long <- c("precipitation", "wind_speed", "maximumum_temperature", "minimum_temperature", "average_temperature", "relative_humidity", "surf_solar_radiation_down")
+vars <- c("pr", "sfcWind", "tasmax", "tasmin", "tas", "hurs", "rsds")
 
 
-model <- "MRI-ESM2-0"
-g <- "gn"
+model <- "GFDL-ESM4"
+g <- "gr1"
 r <- "r1i1p1f1"
 
-walk2(vars_long, vars, function(var_long, var){
+
+walk2(vars_long[1], vars[1], function(var_long, var){
   
   # var_long = vars_long[6]
   # var = vars[6]
